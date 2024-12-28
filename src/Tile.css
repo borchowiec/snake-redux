@@ -1,0 +1,38 @@
+.tile {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile.light {
+    background-color: #AAD851;
+}
+
+.tile.dark {
+    background-color: #97c53f;
+}
+
+.tile .content {
+    transition: width 0.1s linear, height 0.1s linear, background-color 0.1s linear;
+}
+
+.tile .content.empty {
+    width: 0%;
+    height: 0%;
+}
+
+.tile .content.snake {
+    background-color: #4E87F3;
+    border-radius: 10px;
+    width: 90%;
+    height: 90%;
+}
+
+.tile .content.bonus {
+    background-color: #df1313;
+    border-radius: 100%;
+    width: 90%;
+    height: 90%;
+}

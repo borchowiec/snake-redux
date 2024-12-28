@@ -1,0 +1,14 @@
+.controls {
+    margin-left: 100px;
+    margin-top: 250px;
+}
+
+.controls .row {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+
+.controls h1 {
+    color: #df1313;
+}

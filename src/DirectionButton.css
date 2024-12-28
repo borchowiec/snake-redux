@@ -1,0 +1,17 @@
+.direction-button {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    border: 4px solid #AAD851;
+    color: #AAD851;
+    font-weight: bold;
+    font-size: 16px;
+
+    transition: border-color 0.1s linear, color 0.1s linear;
+}
+
+.direction-button.active {
+    border-color: #4E87F3 !important;
+    color: #4E87F3 !important;
+}
