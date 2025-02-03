@@ -13,7 +13,7 @@ function App() {
 	const appRef = useRef<HTMLDivElement>(null);
 
 	function moveSnake(e: React.KeyboardEvent<HTMLDivElement>) {
-		console.log(e);
+		e.preventDefault();
 		switch (e.code) {
 			case 'ArrowLeft':
 			case 'KeyA':
