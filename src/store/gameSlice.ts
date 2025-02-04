@@ -76,17 +76,12 @@ export const gameSlice = createSlice({
                 state.snake.push(newSnakePart);
             }
 
-            for (let i = 1; i < state.snake.length; i++) {
-                const snakePart = state.snake[i];
-
-                if (snakePart.x === state.snake[0].x && snakePart.y === state.snake[0].y) {
-                    state.gameOver = true;
-                    break;
-                }
-            }
         },
         setDirection: (state, action: {payload: Direction}) => {
             state.direction = action.payload;
+        },
+        setGameOver:(state) =>{
+            state.gameOver = true;
         }
     }
 });
