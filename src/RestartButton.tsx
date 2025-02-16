@@ -3,7 +3,7 @@ import './RestartButton.css';
 function RestartButton({ restartGame }) {
 	return (
 		<button className='restart-button' onClick={restartGame}>
-			Zacznij jeszcze raz
+			Restart game
 		</button>
 	);
 }
