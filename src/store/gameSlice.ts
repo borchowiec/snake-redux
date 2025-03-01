@@ -28,14 +28,19 @@ function getRandomCoordinates() {
 	};
 }
 
-export const gameSlice = createSlice({
-	name: 'game',
-	initialState: {
+function setInitialState() {
+	return {
 		snake: createNewSnake(),
 		direction: Direction.NORTH,
 		bonus: getRandomCoordinates(),
 		gameOver: false,
-	},
+	};
+}
+
+export const gameSlice = createSlice({
+	name: 'game',
+	initialState: setInitialState(),
+
 	reducers: {
 		updateGameState: (state) => {
 			let previousX = state.snake[0].x;
@@ -70,10 +75,7 @@ export const gameSlice = createSlice({
 				previousY = tempY;
 			}
 
-			if (
-				state.snake[0].x === state.bonus.x &&
-				state.snake[0].y === state.bonus.y
-			) {
+			if (state.snake[0].x === state.bonus.x && state.snake[0].y === state.bonus.y) {
 				state.bonus = getRandomCoordinates();
 				const newSnakePart: SnakePart = { x: previousX, y: previousY };
 				state.snake.push(newSnakePart);
@@ -82,10 +84,7 @@ export const gameSlice = createSlice({
 			for (let i = 1; i < state.snake.length; i++) {
 				const snakePart = state.snake[i];
 
-				if (
-					snakePart.x === state.snake[0].x &&
-					snakePart.y === state.snake[0].y
-				) {
+				if (snakePart.x === state.snake[0].x && snakePart.y === state.snake[0].y) {
 					state.gameOver = true;
 					break;
 				}
@@ -94,11 +93,6 @@ export const gameSlice = createSlice({
 		setDirection: (state, action: { payload: Direction }) => {
 			state.direction = action.payload;
 		},
-		restartGame: (state) => {
-			state.snake = createNewSnake();
-			state.direction = Direction.NORTH;
-			state.bonus = getRandomCoordinates();
-			state.gameOver = false;
-		},
+		restartGame: () => setInitialState(),
 	},
 });
