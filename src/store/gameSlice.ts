@@ -87,5 +87,6 @@ export const gameSlice = createSlice({
 		setDirection: (state, action: { payload: Direction }) => {
 			state.direction = action.payload;
 		},
+		restartGame: () => setInitialState(),
 	},
 });
