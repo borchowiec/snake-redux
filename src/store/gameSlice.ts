@@ -29,6 +29,7 @@ function getRandomCoordinates() {
 }
 
 function setInitialState() {
+	console.log('RESTARTING');
 	return {
 		snake: createNewSnake(),
 		direction: Direction.NORTH,
@@ -85,8 +86,16 @@ export const gameSlice = createSlice({
 			}
 		},
 		setDirection: (state, action: { payload: Direction }) => {
+			console.log('change direction');
 			state.direction = action.payload;
 		},
-		restartGame: () => setInitialState(),
+		setGameOver: (state) => {
+			console.log('game over');
+			state.gameOver = true;
+		},
+		restartGame: (state) => {
+			console.log('restart');
+			state = setInitialState();
+		},
 	},
 });
