@@ -5,7 +5,6 @@ function checkSnakeCollisionMiddleware(storeApi){
     return function(next){
         return function(action){
             const game = storeApi.getState().game
-            if (game.gameOver) return
             next(action)
             for (let i = 1; i < game.snake.length; i++) {
                 const snakePart = game.snake[i];
