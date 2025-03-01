@@ -75,12 +75,6 @@ export const gameSlice = createSlice({
 				previousY = tempY;
 			}
 
-			if (state.snake[0].x === state.bonus.x && state.snake[0].y === state.bonus.y) {
-				state.bonus = getRandomCoordinates();
-				const newSnakePart: SnakePart = { x: previousX, y: previousY };
-				state.snake.push(newSnakePart);
-			}
-
 			for (let i = 1; i < state.snake.length; i++) {
 				const snakePart = state.snake[i];
 
@@ -93,6 +87,5 @@ export const gameSlice = createSlice({
 		setDirection: (state, action: { payload: Direction }) => {
 			state.direction = action.payload;
 		},
-		restartGame: () => setInitialState(),
 	},
 });
