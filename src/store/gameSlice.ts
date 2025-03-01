@@ -29,7 +29,6 @@ function getRandomCoordinates() {
 }
 
 function setInitialState() {
-	console.log('RESTARTING');
 	return {
 		snake: createNewSnake(),
 		direction: Direction.NORTH,
@@ -76,26 +75,23 @@ export const gameSlice = createSlice({
 				previousY = tempY;
 			}
 
-			for (let i = 1; i < state.snake.length; i++) {
-				const snakePart = state.snake[i];
+			if (state.snake[0].x === state.bonus.x && state.snake[0].y === state.bonus.y) {
+                state.bonus = getRandomCoordinates();
+                const newSnakePart: SnakePart = {x: previousX, y: previousY};
+                state.snake.push(newSnakePart);
+            }
 
-				if (snakePart.x === state.snake[0].x && snakePart.y === state.snake[0].y) {
-					state.gameOver = true;
-					break;
-				}
-			}
 		},
 		setDirection: (state, action: { payload: Direction }) => {
-			console.log('change direction');
 			state.direction = action.payload;
 		},
 		setGameOver: (state) => {
-			console.log('game over');
 			state.gameOver = true;
 		},
-		restartGame: (state) => {
-			console.log('restart');
-			state = setInitialState();
+		restartGame: () => {
+			const newState = setInitialState();
+			return newState
+	
 		},
 	},
 });
